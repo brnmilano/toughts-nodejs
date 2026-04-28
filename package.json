@@ -1,0 +1,35 @@
+{
+  "name": "toughts-nodejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.js localhost 3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brnmilano/toughts-nodejs.git"
+  },
+  "author": "Bruno Milano - https://github.com/brnmilano",
+  "license": "MIT",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/brnmilano/toughts-nodejs/issues"
+  },
+  "homepage": "https://github.com/brnmilano/toughts-nodejs#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "bootstrap-icons": "^1.13.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.7",
+    "cookie-session": "^2.1.1",
+    "express": "^5.2.1",
+    "express-flash": "^0.0.2",
+    "express-handlebars": "^9.0.1",
+    "express-session": "^1.19.0",
+    "mysql2": "^3.22.3",
+    "nodemon": "^3.1.14",
+    "sequelize": "^6.37.8",
+    "session-file-store": "^1.5.0"
+  }
+}
