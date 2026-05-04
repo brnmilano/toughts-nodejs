@@ -12,8 +12,8 @@ const Tought = db.define("Toughts", {
 });
 
 // 1 pensamento pertence a um usuário (belongsTo)
-Tought.belongsTo(User);
+Tought.belongsTo(User, { foreignKey: "userId" });
 // 1 usuário tem muitos pensamentos (hasMany)
-User.hasMany(Tought);
+User.hasMany(Tought, { foreignKey: "userId" });
 
 module.exports = Tought;

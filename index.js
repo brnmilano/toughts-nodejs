@@ -66,6 +66,12 @@ app.use(
 // Configuração das flash messages
 app.use(flash());
 
+// Middleware para passar flash messages para as views
+app.use((req, res, next) => {
+  res.locals.messages = req.flash();
+  next();
+});
+
 // Configuração do set session to res
 app.use((req, res, next) => {
   if (req.session.userId) {
@@ -100,7 +106,7 @@ app.use("/", authRoutes);
 const PORT = process.env.PORT || 3000;
 
 connections
-  .sync()
+  .sync({ force: false })
   .then(() => {
     app.listen(PORT, () => {
       console.log(`Servidor rodando na porta ${PORT}`);
