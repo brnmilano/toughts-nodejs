@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const handlebars = require("express-handlebars");
 const session = require("express-session");
@@ -47,7 +49,7 @@ app.use(express.json());
 app.use(
   session({
     name: "session",
-    secret: "nosso_secret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: new FileStore({
