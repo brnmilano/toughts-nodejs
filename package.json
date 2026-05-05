@@ -1,6 +1,7 @@
 {
   "name": "toughts-nodejs",
   "version": "1.0.0",
+  "description": "Aplicação full-stack para armazenar e compartilhar toughts. Oferece autenticação, CRUD, busca e ordenação de pensamentos. Tech: Node.js, Express, Sequelize, MySQL.",
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./index.js localhost 3000",

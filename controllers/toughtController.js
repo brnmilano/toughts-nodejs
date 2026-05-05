@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const Tought = require("../models/Tought");
 const User = require("../models/User");
 
@@ -5,11 +6,38 @@ module.exports = class ToughtController {
   static async showToughts(req, res) {
     const message = req.flash("message")[0] || null;
 
-    const toughtsData = await Tought.findAll();
+    let search = "";
+    let order = "DESC";
+
+    if (req.query.search) {
+      search = req.query.search;
+    }
+
+    if (req.query.order === "old") {
+      order = "ASC";
+    } else {
+      order = "DESC";
+    }
+
+    const toughtsData = await Tought.findAll({
+      include: User,
+      order: [["createdAt", order]],
+      where: {
+        title: {
+          [Op.like]: `%${search}%`,
+        },
+      },
+    });
 
     const toughts = toughtsData.map((result) => result.dataValues);
 
-    res.render("toughts/home", { message, toughts });
+    let toughtsQty = toughts.length;
+
+    if (toughtsQty === 0) {
+      toughtsQty = false;
+    }
+
+    res.render("toughts/home", { message, toughts, search, toughtsQty });
   }
 
   /* Exibe o dashboard do usuário com todos os pensamentos associados a ele */
